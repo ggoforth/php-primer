@@ -3,9 +3,7 @@
 trait GeekwiseAcademyTeacher {
 
     public function teach($what = null) {
-        $homework = $this->homework($what);
-
-        return "Today we'll be learning $what and your homework is $homework.";
+        return "Today we'll be learning $what and your homework is " . $this->homework($what);
     }
 
     public function homework($what = null) {
@@ -15,10 +13,10 @@ trait GeekwiseAcademyTeacher {
 
         switch ($what) {
             case "php":
-                return 'learn about classes';
+                return 'learn about classes.';
                 break;
             case "javascript";
-                return 'learn about javascript';
+                return 'learn about javascript.';
                 break;
         }
     }
