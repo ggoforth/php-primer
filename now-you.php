@@ -15,3 +15,44 @@
 // - Create an instance of the class
 // - Call the drive function
 // - Call the details function
+
+class Car {
+
+    public function __construct($make, $model, $year) {
+        $this->make = $make;
+        $this->model = $model;
+        $this->year = $year;
+    }
+
+    public function drive() {
+        echo "car is driving\n";
+    }
+
+}
+
+class MyCar extends Car {
+
+    public function __construct($make, $model, $year, $properties = []) {
+        parent::__construct($make, $model, $year);
+
+        $this->properties = $properties;
+        foreach ($properties as $property => $val) {
+            $this->$property = $val;
+        }
+    }
+
+    public function details () {
+        echo sprintf("The make is %s, the model is %s, and the year is %s\n", $this->make, $this->model, $this->year);
+    }
+
+    public function otherDetails() {
+        foreach ($this->properties as $propName => $propVal) {
+            echo sprintf("The %s has a value of %s\n", $propName, $this->$propName);
+        }
+    }
+}
+
+$car = new MyCar('Honda', 'Accord', '2009', ['seats' => 'leather', 'radio' => 'siriusXm']);
+$car->drive();
+$car->details();
+$car->otherDetails();
